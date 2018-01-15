@@ -1,22 +1,6 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-      <br>
-      <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+  <div class="hello">{{helloNumber}}
+  <button @click="destoryd" >子组件销毁</button>
   </div>
 </template>
 
@@ -25,8 +9,43 @@ export default {
   name: 'HelloWorld',
   data() {
     return {
-      msg: 'Welcome to Your Vue.js App',
+      msg: 'Welcome to HelloWorld',
     };
+  },
+  props: {
+    helloNumber: {
+      type: Number,
+      default: 0,
+    },
+  },
+  mounted() {
+    window.console.log('HelloWorld调用了mounted函数');
+    // this.$emit('helloChages');
+  },
+  beforeUpdate() {
+    window.console.log('HelloWorld调用了beforeUpdate函数');
+  },
+  updated() {
+    window.console.log('HelloWorld调用了updated函数');
+  },
+  beforeDestroy() {
+    window.console.log('HelloWorld组件销毁前');
+  },
+  destroyed() {
+    window.console.log('HelloWorld组件已经销毁');
+    // document.querySelector('.hello').innerHTML = '123456';
+   // window.console.log(this.msg);
+  },
+  activated() {
+    window.console.log('HelloWorld调用了 activate');
+  },
+  deactivated() {
+    window.console.log('HelloWorld调用了 deactivated');
+  },
+  methods: {
+    destoryd() {
+      this.$destroy();
+    },
   },
 };
 </script>
@@ -46,5 +65,10 @@ li {
 }
 a {
   color: #42b983;
+}
+button{
+  padding: 1px 1%;
+  background: #4EB862;
+  width: 70px;height: 20px;
 }
 </style>

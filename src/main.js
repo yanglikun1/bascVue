@@ -20,19 +20,24 @@ new Vue({
   template: '<App/>',
   beforeCreate() {
     window.console.log('调用了beforCreate函数===============');
+    // window.console.log(this);
     // window.console.log(`el:    ${this.$el}`);
     // window.console.log(`data   : ${this.$data}`);
-    // window.console.log(`masd: ${this.masd}`);
-    // const vm = Object.assign({}, this);
-    // window.console.log(vm);
+    // 对比实例代码
+    /*  const vm = Object.assign({}, this);
+    window.console.log(vm);
+      */
   },
   created() {
     window.console.log('调用了create函数===================');
     // window.console.log(this);
     // window.console.log(`el     : ${this.$el}`);
     // window.console.log(`data   : ${JSON.stringify(this.$data)}`);
-    // window.console.log(`masd: ${this.masd}`);
-    // this.toMount(); // this.$mount('#app');
+    // window.console.log(`msg   : ${this.msg}`);
+    /*
+     验证没有el的选项
+     this.toMount(); // this.$mount('#first');
+    */
   },
   beforeMount() {
     window.console.log('调用了beforeMount函数=============');
